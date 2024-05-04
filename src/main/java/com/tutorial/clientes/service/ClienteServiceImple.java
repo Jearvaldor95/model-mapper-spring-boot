@@ -42,7 +42,7 @@ public class ClienteServiceImple implements ClienteService {
     @Override
     public ClienteDTO update(Integer clienteId, ClienteDTO clienteDTO) {
         Cliente cliente = clienteRepository.findById(clienteId).get();
-        clienteMapper.updateCliente(cliente, clienteDTO);
+        clienteMapper.updateCliente(cliente, clienteMapper.toCliente(clienteDTO));
         return clienteMapper.toClienteDto(clienteRepository.save(cliente));
     }
 
