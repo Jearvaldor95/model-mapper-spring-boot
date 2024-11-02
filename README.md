@@ -12,17 +12,11 @@
          <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId></dependency>
 
 # Para la crear los mapper
-* MapStrut
+* ModelMapper
 
-         <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+         <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.5.5.Final</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>1.5.5.Final</version>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.2.1</version>
         </dependency>
