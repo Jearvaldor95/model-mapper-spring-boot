@@ -1,26 +1,52 @@
- 
 package com.tutorial.clientes.service;
 
-
+import com.tutorial.clientes.ClienteMapper;
 import com.tutorial.clientes.dto.ClienteDTO;
+import com.tutorial.clientes.model.Cliente;
+import com.tutorial.clientes.repository.ClienteRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-/**
- *
- * @author USUARIO
- */
-public interface ClienteService {
+@Service
+public class ClienteService {
 
-    public ClienteDTO save(ClienteDTO clienteDTO);
+    @Autowired
+    private ClienteMapper clienteMapper;
 
-    public List<ClienteDTO> getClientes();
+    @Autowired
+    private ModelMapper mapper;
 
-    public ClienteDTO getCliente(Integer clienteId);
+    @Autowired
+    private ClienteRepository clienteRepository;
 
-    public ClienteDTO update(Integer clienteId, ClienteDTO clienteDTO);
+    public ClienteDTO save(ClienteDTO clienteDTO){
+        Cliente cliente = mapper.map(clienteDTO, Cliente.class);
+        return mapper.map(clienteRepository.save(cliente), ClienteDTO.class);
+    }
 
-    public ClienteDTO delete(Integer clienteId);
+    public List<ClienteDTO> getClientes(){
+        List<Cliente> clientes = clienteRepository.findAll();
+        return clientes.stream().map(cliente -> mapper.map(cliente, ClienteDTO.class))
+                .collect(Collectors.toList());
+    }
 
-    
+    public ClienteDTO getCliente(Integer id){
+       Cliente cliente = clienteRepository.findById(id).get();
+       return mapper.map(cliente, ClienteDTO.class);
+    }
+
+    public ClienteDTO update(Integer id, ClienteDTO clienteDTO){
+        Cliente cliente = clienteRepository.findById(id).get();
+        mapper.map(clienteDTO, cliente);
+        Cliente updateCliente = clienteRepository.save(cliente);
+        return mapper.map(updateCliente, ClienteDTO.class);
+    }
+
+    public void delete(Integer id) {
+        clienteRepository.deleteById(id);
+    }
 }

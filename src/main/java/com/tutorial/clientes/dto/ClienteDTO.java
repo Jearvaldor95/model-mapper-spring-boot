@@ -9,16 +9,14 @@ public class ClienteDTO {
     private int idCliente;
     private String nombreCliente;
     private String apellidosCliente;
-    private Long identificacionCliente;
     private String direccionCliente;
     private Long telefonoCliente;
     private String emailCliente;
 
-    public ClienteDTO(int idCliente, String nombreCliente, String apellidosCliente, Long identificacionCliente, String direccionCliente, Long telefonoCliente, String emailCliente) {
+    public ClienteDTO(int idCliente, String nombreCliente, String apellidosCliente, String direccionCliente, Long telefonoCliente, String emailCliente) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.apellidosCliente = apellidosCliente;
-        this.identificacionCliente = identificacionCliente;
         this.direccionCliente = direccionCliente;
         this.telefonoCliente = telefonoCliente;
         this.emailCliente = emailCliente;
@@ -49,14 +47,6 @@ public class ClienteDTO {
 
     public void setApellidosCliente(String apellidosCliente) {
         this.apellidosCliente = apellidosCliente;
-    }
-
-    public Long getIdentificacionCliente() {
-        return identificacionCliente;
-    }
-
-    public void setIdentificacionCliente(Long identificacionCliente) {
-        this.identificacionCliente = identificacionCliente;
     }
 
     public String getDireccionCliente() {
